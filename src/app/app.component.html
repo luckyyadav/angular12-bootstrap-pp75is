@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group mt-5">
+        <input
+          type="file"
+          placeholder="upload file"
+          (change)="UploadFile($event)"
+        />
+      </div>
+      <!--  <img *ngIf="imgPath" [src]="imgPath" /> -->
+      <h3>My Canvas</h3>
+      <ul class="">
+        <li *ngFor="let item of photos">
+          <img [src]="item.url" />
+        </li>
+      </ul>
+      <div class="canvasEle">
+        <canvas #myCanvas height="1200px" width="1300px" id="myCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
