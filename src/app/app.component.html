@@ -1,6 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      <ul class="">
+        <li
+          class="d-inline"
+          *ngFor="let item of photos"
+          (dragover)="allowDrop($event)"
+          
+        >
+          <img
+          id="{{item.id}}"
+            class="img-thumbnail"
+            [src]="item.download_url"
+            width="100"
+            draggable="true"
+            (dragstart)="drag($event,item)"
+          />
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-12">
       <div class="form-group mt-5">
         <input
           type="file"
@@ -10,13 +30,16 @@
       </div>
       <!--  <img *ngIf="imgPath" [src]="imgPath" /> -->
       <h3>My Canvas</h3>
-      <ul class="">
-        <li *ngFor="let item of photos">
-          <img [src]="item.url" />
-        </li>
-      </ul>
+
       <div class="canvasEle">
-        <canvas #myCanvas height="1200px" width="1300px" id="myCanvas"></canvas>
+        <canvas
+          #myCanvas
+          (drop)="drop($event)"
+          (dragover)="allowDrop($event)"
+          height="1200px"
+          width="1300px"
+          id="myCanvas"
+        ></canvas>
       </div>
     </div>
   </div>
